@@ -1,0 +1,71 @@
+This is the productions im thinking
+
+
+program : statements EOF;
+
+statements : statement statements
+           | bool_statement statements
+           | ;
+
+statement : block_statement
+          | while_statement
+          | do_while_statement
+          | if_statement
+          | variable_decl_statement
+          | variable_assignment_statement
+          | func_declaration_statement
+          | func_def_statement
+          | prototype_def_statement
+          | func_call_statement;
+
+bool_statement : bool SEMICOLON;
+
+block_statement : LCBRAC statements RCBRAC;
+
+while_statement : WHILE LPARAN bool RPARAN statement;
+
+do_while_statement : DO statement WHILE LPARAN bool RPARAN SEMICOLON;
+
+if_statement : IF LPARAN bool RPARAN statement (ELSE statement)?;
+
+variable_decl_statement : DATATYPE decl SEMICOLON;
+
+decl : id (ASSIGN bool)? (COMMA decl)?;
+
+variable_assignment_statement : id ASSIGN bool SEMICOLON;
+
+func_declaration_statement : FN id LPARAN args RPARAN COLON return_type SEMICOLON;
+
+func_def_statement : FN id LPARAN params RPARAN COLON return_type block_statement;
+
+func_call_statement : id LPARAN args? RPARAN SEMICOLON;
+
+params : param (COMMA param)*;
+
+param : DATATYPE id;
+
+args : bool (COMMA bool)*;
+
+bool : or_expr;
+
+or_expr : and_expr (OR and_expr)*;
+
+and_expr : equality_expr (AND equality_expr)*;
+
+equality_expr : rel_expr ((EQ | NE) rel_expr)*;
+
+rel_expr : additive_expr ((LT | LE | GT | GE) additive_expr)*;
+
+additive_expr : term ((PLUS | MINUS) term)*;
+
+term : unary ((MULTIPLY | DIVIDE) unary)*;
+
+unary : (UMINUS | UPLUS) unary | factor;
+
+factor : LPARAN bool RPARAN
+       | NUM
+       | REAL
+       | CHAR
+       | STRING
+       | id;
+

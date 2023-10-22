@@ -1,0 +1,51 @@
+int x, y = 10; // Variable declaration and assignment
+
+fn add(a, b: int) : int; // Function declaration
+
+if (x > 0) { // Boolean expression as a statement
+    print("x is positive");
+} else {
+    print("x is non-positive");
+}
+
+fn add(a, b: int) : int { // Function definition
+    return a + b;
+}
+
+int result = add(3, 4); // Function call
+print("Result: ", result);
+
+while (x > 0) { // Looping constructs
+    x = x - 1;
+}
+
+do {
+    y = y + 1;
+} while (y < 5);
+
+{ // Block statement
+    int z = 5;
+    x = x + z;
+}
+
+bool condition = (x == 5) || (result < 10) && (y >= 0); // More complex boolean expression
+
+int z = 5, w = 7; // Variable declaration and assignment with boolean expressions
+char ch = 'A';
+
+string message = "Hello, World!"; // Strings
+print(message);
+
+char symbol = '!'; // Character
+
+fn multiply(a, b: int) : int; // Function declaration
+
+fn multiply(a, b: int) : int { // Function definition
+    return a * b;
+}
+
+int product = multiply(2, 3); // Function call
+print("Product: ", product);
+
+print(ch); // Printing a character
+
